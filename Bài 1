@@ -1,0 +1,64 @@
+public class Person{
+    protected String name;
+    protected int age;
+    public Person(){
+        
+    }
+    public Person(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+    void display(){
+        System.out.println("Name: "+this.name+",");
+        System.out.println("Age: "+this.age+".");
+    }
+}
+public class Employee extends Person{
+    protected double luong;
+    protected String title; 
+    public Employee(){
+        
+    }
+    public Employee(String name, int age, double luong, String title){
+        super(name, age);
+        this.luong = luong;
+        this.title = title;
+    }
+    public Employee(String name, int age, double luong){
+        super(name, age);
+        this.luong = luong;
+    
+    }
+    
+    @Override
+    void display(){
+        super.display();
+        System.out.println("Luong la"+this.luong+" "+"Chuc vu la"+this.title);
+    }
+    
+}
+public class Manager extends Employee{
+    private String department;
+    public Manager(String name, int age, double luong, String department ){
+        this();
+        this.name = name;
+        this.age = age;
+        this.luong = luong;
+      //  super(name, age, luong, this.title);
+        this.department = department;
+    }
+    public Manager(){
+        this.title = "Manager";
+    }
+    @Override
+    void display(){
+        super.display();
+        System.out.print("O phong ban"+this.department);
+    }
+    public static void main(String[] args){
+        Manager ma = new Manager("Tran Duc Manh", 20, 30000000, "The Tortured Poets");
+        ma.display();
+        Employee em = new Employee("Ho Minh Dung", 20, 30000000, "Husband");
+        em.display();
+    }
+}
