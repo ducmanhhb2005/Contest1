@@ -1,0 +1,66 @@
+public class Shape{
+    protected String name;
+    Shape(){
+        
+    }
+    Shape(String name){
+        this.name = name;
+    }
+    void display(){
+        System.out.println("Shape: "+name);
+    }
+    double calculateArea(){
+        return 0;
+    }
+}
+
+public class Rectangle extends Shape{
+    protected double length;
+    protected double width;
+    Rectangle(){
+        length = 1;
+        width = 1;
+    }
+    Rectangle(String name){
+        this();
+        this.name = name;
+    }
+    Rectangle(String name, double length, double width){
+        super(name);
+        this.length = length;
+        this.width = width;
+    }
+    @Override 
+    double calculateArea(){
+        return length*width;
+    }
+   
+    double calculatePerimeter(){
+        return 2*(length+width);
+    }
+    @Override
+    void display(){
+        super.display();
+        System.out.println("Length: "+length);
+        System.out.println("Width: "+width);
+    }
+}
+public class Square extends Rectangle{
+    private double side;
+    public Square(String name,double side){
+        super(name, side, side);
+    }
+    @Override
+    void display(){
+        super.display();
+        System.out.println("This is a square");
+    }
+    public static void main(String[] args){
+        Rectangle rec = new Rectangle();
+        rec.display();
+        System.out.println("Chu vi la: "+rec.calculateArea()+" "+"Dien tich la: "+rec.calculatePerimeter());
+        Square sqr = new Square("Hinh vuong",5);
+          sqr.display();
+        System.out.println("Chu vi la: "+sqr.calculateArea()+" "+"Dien tich la: "+sqr.calculatePerimeter());
+    }
+}
